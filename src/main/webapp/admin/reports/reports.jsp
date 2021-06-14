@@ -66,12 +66,12 @@
 								<td>Email</td>
 								<td>Favorite date</td>
 							</tr>
-							<c:forEach var="item" items="${favList }">
+							<c:forEach var="item" items="">
 							<tr>
-								<td>${item.videoTitle }</td>
-								<td>${item.favoriteCount }</td>
-								<td>${item.newestDate }</td>
-								<td>${item.oldestDate }</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
 							</c:forEach>
 						</table>

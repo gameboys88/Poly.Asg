@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import edu.poly.domain.FavoriteReport;
+import edu.poly.domain.FavoriteUserReport;
 import edu.poly.model.Favorite;
 
 public class FavoriteDao extends AbstractEntityDao<Favorite> {
@@ -20,6 +21,21 @@ public class FavoriteDao extends AbstractEntityDao<Favorite> {
 		List<FavoriteReport> list = null;
 		try {
 			TypedQuery<FavoriteReport> query = em.createQuery(jpql, FavoriteReport.class);
+			list = query.getResultList();
+		} finally {
+			em.close();
+		}
+		return list;
+	}
+	
+	public List<FavoriteUserReport> reportFavoriteUsersByVideo(String videoId){
+		String jpql = "select new edu.poly.domain.FavoriteUserReport(f.user.username, f.user.fullname, "
+				+ "f.user.email, f.likeDate) from Favorite f where f.video.videoId = :videoId";
+		EntityManager em = JpaUtils.getEntityManager();
+		List<FavoriteUserReport> list = null;
+		try {
+			TypedQuery<FavoriteUserReport> query = em.createQuery(jpql, FavoriteUserReport.class);
+			query.setParameter("videlId", videoId);
 			list = query.getResultList();
 		} finally {
 			em.close();

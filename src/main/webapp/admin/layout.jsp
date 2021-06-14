@@ -27,7 +27,7 @@
 	<main class="container-fluid">
 		<nav class="row">
 			<nav class="navbar navbar-expand-sm navbar-light bg-light col">
-				<a class="navbar-brand" href="#">Administration</a>
+				<a class="navbar-brand" href="/Poly.Asg/Admin/VideosManagement">Administration</a>
 				<button class="navbar-toggler d-lg-none" type="button"
 					data-toggle="collapse" data-target="#collapsibleNavId"
 					aria-controls="collapsibleNavId" aria-expanded="false"
@@ -36,16 +36,16 @@
 				</button>
 				<div class="collapse navbar-collapse" id="collapsibleNavId">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item active"><a class="nav-link" href="#">
+						<li class="nav-item active"><a class="nav-link" href="/Poly.Asg/Admin/VideosManagement">
 								<i class="fas fa-home    "></i> Home <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <i
+						<li class="nav-item"><a class="nav-link" href="/Poly.Asg/Admin/VideosManagement"> <i
 								class="fas fa-video    "></i> Videos
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#"> <i
 								class="fas fa-user    "></i> Users
 						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <i
+						<li class="nav-item"><a class="nav-link" href="/Poly.Asg/Admin/ReportsManagement"> <i
 								class="fas fa-chart-bar    "></i> Reports
 						</a></li>
 					</ul>
