@@ -7,10 +7,12 @@
 		<div class="nav nav-tabs" id="myTab" role="tablist">
 			<a class="nav-link active" id="nav-favorite-tab" data-toggle="tab"
 				href="#nav-favorite" role="tab" aria-controls="nav-favorite"
-				aria-selected="true">Favorites</a> <a class="nav-link"
+				aria-selected="true">Favorites</a> 
+			<a class="nav-link"
 				id="nav-favoriteUser-tab" data-toggle="tab" href="#nav-favoriteUser"
 				role="tab" aria-controls="nav-favoriteUser" aria-selected="false">Favorite
-				user</a> <a class="nav-link" id="nav-shareFriends-tab" data-toggle="tab"
+				user</a> 
+			<a class="nav-link" id="nav-shareFriends-tab" data-toggle="tab"
 				href="#nav-shareFriends" role="tab" aria-controls="nav-shareFriends"
 				aria-selected="false">Share friends</a>
 		</div>
@@ -25,12 +27,14 @@
 					<td>Lastest date</td>
 					<td>Oldest date</td>
 				</tr>
+				<c:forEach var="item" items="${favList }">
 				<tr>
-					<td>Java programming</td>
-					<td>333</td>
-					<td>2021/6/6</td>
-					<td>2021/5/6</td>
+					<td>${item.videoTitle }</td>
+					<td>${item.favoriteCount }</td>
+					<td>${item.oldestDate }</td>
+					<td>${item.newestDate }</td>
 				</tr>
+				</c:forEach>
 			</table>
 		</div>
 		<div class="tab-pane fade" id="nav-favoriteUser" role="tabpanel"
@@ -62,12 +66,14 @@
 								<td>Email</td>
 								<td>Favorite date</td>
 							</tr>
+							<c:forEach var="item" items="${favList }">
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>${item.videoTitle }</td>
+								<td>${item.favoriteCount }</td>
+								<td>${item.newestDate }</td>
+								<td>${item.oldestDate }</td>
 							</tr>
+							</c:forEach>
 						</table>
 					</div>
 				</div>

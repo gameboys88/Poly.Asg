@@ -49,6 +49,12 @@ public class VideosManagementServlet extends HttpServlet {
 		} else if(url.contains("update")) {
 			update(req, resp);
 			return;
+		} else if(url.contains("delete")) {
+			delete(req, resp);
+			return;
+		} else if(url.contains("reset")) {
+			reset(req, resp);
+			return;
 		}
 		findAll(req, resp);
 		PageInfo.prepareAndForwardAdmin(req, resp, PageType.VIDEO_MANAGEMENT_PAGE);
@@ -105,14 +111,37 @@ public class VideosManagementServlet extends HttpServlet {
 		PageInfo.prepareAndForwardAdmin(req, resp, PageType.VIDEO_MANAGEMENT_PAGE);
 	}
 	
-	private void reset(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
+	private void reset(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("video", new Video());
+		findAll(req, resp);
+		PageInfo.prepareAndForwardAdmin(req, resp, PageType.VIDEO_MANAGEMENT_PAGE);
 	}
 
-	private void delete(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("videoId");
+		if(id == null) {
+			req.setAttribute("error", "Video is required!");
+			PageInfo.prepareAndForwardAdmin(req, resp, PageType.VIDEO_MANAGEMENT_PAGE);
+			return;
+		}
+		try {
+			VideoDao dao = new VideoDao();
+			Video video = dao.findById(id);
+			
+			if(video == null) {
+				req.setAttribute("error", "Video is not found");
+				PageInfo.prepareAndForwardAdmin(req, resp, PageType.VIDEO_MANAGEMENT_PAGE);
+				return;
+			}
+			
+			dao.delete(id);
+			req.setAttribute("message", "Video is deleted!");
+			req.setAttribute("video", new Video());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		findAll(req, resp);
+		PageInfo.prepareAndForwardAdmin(req, resp, PageType.VIDEO_MANAGEMENT_PAGE);
 	}
 
 	private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
